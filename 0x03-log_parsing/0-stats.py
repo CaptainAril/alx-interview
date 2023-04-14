@@ -26,7 +26,6 @@ for line in sys.stdin:
             if code not in possible_code:
                 continue
             statsCode[code] = count
-            print("{}: {}".format(code, count))
 
         except Exception:
             pass
