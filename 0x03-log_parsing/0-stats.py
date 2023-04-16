@@ -21,8 +21,8 @@ def log():
             count += 1
             splt = line.split(' ')
             try:
-                code = int(splt[7])
-                size = int(splt[8])
+                code = int(splt[-2])
+                size = int(splt[-1])
                 total_size += size
                 if code not in possible_code:
                     continue
