@@ -20,9 +20,9 @@ for line in sys.stdin:
         count += 1
         splt = line.split(' ')
         try:
-            size = int(splt[7])
+            code = int(splt[7])
+            size = int(splt[8])
             total_size += size
-            code = int(splt[8])
             if code not in possible_code:
                 continue
             statsCode[code] = count
