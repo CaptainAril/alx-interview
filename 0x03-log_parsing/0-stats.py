@@ -21,9 +21,9 @@ def log():
             count += 1
             splt = line.split(' ')
             try:
-                code = int(splt[-2])
                 size = int(splt[-1])
                 total_size += size
+                code = int(splt[-2])
                 if code not in possible_code:
                     continue
                 if code in statsCode.keys():
