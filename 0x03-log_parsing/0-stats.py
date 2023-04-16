@@ -17,11 +17,6 @@ def log():
     statsCode = {}
     possible_code = [200, 301, 400, 401, 403, 404, 405, 500]
     for line in sys.stdin:
-        if count == 10:
-            returnLog(total_size, statsCode)
-            count = 0
-            statsCode = {}
-
         try:
             count += 1
             splt = line.split(' ')
@@ -39,7 +34,11 @@ def log():
             except Exception:
                 pass
 
-        except KeyboardInterrupt as e:
+            if count == 10:
+                returnLog(total_size, statsCode)
+                count = 0
+
+        except KeyboardInterrupt:
             returnLog(total_size, statsCode)
             raise
 
