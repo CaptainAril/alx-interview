@@ -16,8 +16,8 @@ def log():
     total_size = 0
     statsCode = {}
     possible_code = [200, 301, 400, 401, 403, 404, 405, 500]
-    for line in sys.stdin:
-        try:
+    try:
+        for line in sys.stdin:
             count += 1
             splt = line.split(' ')
             try:
@@ -37,10 +37,11 @@ def log():
             if count == 10:
                 returnLog(total_size, statsCode)
                 count = 0
+        returnLog(total_size, statsCode)
 
-        except KeyboardInterrupt:
-            returnLog(total_size, statsCode)
-            raise
+    except KeyboardInterrupt:
+        returnLog(total_size, statsCode)
+        raise
 
 
 if __name__ == '__main__':
