@@ -8,14 +8,15 @@ def validUTF8(data):
     """
     n_bytes = 0
 
-    for num in data:
-        bin_rep = format(num, '#010b')[-8:]
+    mask1 = 1 << 7
+    mask2 = 1 << 6
 
+    for num in data:
+        mask = 1 << 7
         if n_bytes == 0:
-            for bit in bin_rep:
-                if bit == '0':
-                    break
+            while mask & num:
                 n_bytes += 1
+                mask = mask >> 1
 
             if n_bytes == 0:
                 continue
@@ -23,9 +24,7 @@ def validUTF8(data):
             if n_bytes == 1 or n_bytes > 4:
                 return False
         else:
-            if not (bin_rep[1] == '1' and bin_rep[1] == '0'):
+            if not (num & mask1 and not (num & mask2)):
                 return False
-
         n_bytes -= 1
-
     return n_bytes == 0
