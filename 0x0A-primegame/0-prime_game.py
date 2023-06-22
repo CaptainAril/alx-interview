@@ -28,7 +28,6 @@ def isWinner(x, nums):
     Ben = 0
     for round in range(x):
         # each round
-        print(f'round {round}')
         roundNumber = nums[round]
         roundSet = [n for n in range(1, roundNumber+1)]
         count = 0
